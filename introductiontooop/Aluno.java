@@ -1,10 +1,39 @@
 package introductiontooop;
 
-public class Aluno 
-{
-    public String name;
-    public double age;
-    public String course;
+public class Aluno {
+    private String name;
+    private double age;
+    private String course;
+
+    public Aluno(String name, double age, String course) {
+        this.name = name;
+        this.age = age;
+        this.course = course;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getAge() {
+        return age;
+    }
+
+    public String getCourse() {
+        return course;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAge(double age) {
+        this.age = age;
+    }
+
+    public void setCourse(String course) {
+        this.course = course;
+    }
 
     public void apresentar() {
         System.out.println("Dados do aluno:");
@@ -14,11 +43,7 @@ public class Aluno
     }
 
     public static void main(String[] args) {
-        Aluno aluno1 = new Aluno();
-        aluno1.name = "Gustavo";
-        aluno1.age = 19;
-        aluno1.course = "Ciência da Computação";
-
+        Aluno aluno1 = new Aluno("Gustavo", 19, "Ciência da Computação");
         aluno1.apresentar();
     }
 }
