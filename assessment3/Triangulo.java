@@ -3,28 +3,22 @@ package assessment3;
 public class Triangulo extends Forma2d {
     private double lado1, lado2, lado3;
 
-    public Triangulo(double lado1, double lado2, double lado3) {
-        super(classificarTriangulo(lado1, lado2, lado3));
+        public Triangulo(double lado1, double lado2, double lado3) {
+        if ((lado1 + lado2 <= lado3) || 
+            (lado1 + lado3 <= lado2) || 
+            (lado2 + lado3 <= lado1)) {
+            throw new IllegalArgumentException("Os três lados informados não formam um triângulo. Para formar um triângulo, a cada dois lados somados, deverá ser maior que o terceiro.");
+        }
 
-        if (!formaTrianguloValido(lado1, lado2, lado3)) throw new IllegalArgumentException("Os três lados informados não formam um triângulo. Para formar um triângulo, a cada dois lados somados, deverá ser maior que o terceiro.");
+        super(
+            (lado1 == lado2 && lado2 == lado3) ? "Triângulo Equilátero" :
+            (lado1 == lado2 || lado1 == lado3 || lado2 == lado3) ? "Triângulo Isósceles" :
+            "Triângulo Escaleno"
+        );
 
         this.lado1 = lado1;
         this.lado2 = lado2;
         this.lado3 = lado3;
-    }
-
-    private static boolean formaTrianguloValido(double a, double b, double c) {
-        return (a + b > c) && (a + c > b) && (b + c > a);
-    }
-
-    private static String classificarTriangulo(double a, double b, double c) {
-        if (a == b && b == c) {
-            return "Triângulo Equilátero";
-        } else if (a == b || a == c || b == c) {
-            return "Triângulo Isósceles";
-        } else {
-            return "Triângulo Escaleno";
-        }
     }
 
     @Override
